@@ -12,6 +12,7 @@ export default function Header() {
             <nav>
                 <Link className={`nav-link ${pathname === '/' && 'active'}`} href={'/'}>HOME</Link>
                 <Link className={`nav-link ${pathname === '/about' && 'active'}`}  href={'/about'}>ABOUT</Link>
+                <Link className={`nav-link ${pathname === '/contact' && 'active'}`}  href={'/contact'}>CONTACT</Link>
             </nav>
         </header>
     );
