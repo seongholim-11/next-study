@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from 'next/link';
+import Header from "@/components/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -28,16 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header>
-          <nav>
-            <Link href="/">
-              HOME
-            </Link>
-            <Link href="/blog">
-              blog
-            </Link>
-          </nav>
-        </header>
+        <Header />
         <main>
           {children}
         </main>

@@ -2,17 +2,18 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import styles from './Header.module.css';
+
 
 export default function Header() {
     const pathname = usePathname();
 
     return (
-        <header>
+        <header className={styles.header}>
             My Awesome Website
-            <nav>
-                <Link className={`nav-link ${pathname === '/' && 'active'}`} href={'/'}>HOME</Link>
-                <Link className={`nav-link ${pathname === '/about' && 'active'}`}  href={'/about'}>ABOUT</Link>
-                <Link className={`nav-link ${pathname === '/contact' && 'active'}`}  href={'/contact'}>CONTACT</Link>
+            <nav className={styles.nav}>
+                <Link className={styles.link} href={'/'}>HOME</Link>
+                <Link className={styles.link}  href={'/blog'}>BLOG</Link>
             </nav>
         </header>
     );
