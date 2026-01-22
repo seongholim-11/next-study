@@ -4,23 +4,36 @@
 export type Post = {
   slug: string;
   title: string;
+  content: string;
 };
 
-// 실제 애플리케이션에서는 이 함수가 데이터베이스나 외부 CMS와 통신할 수 있습니다.
+// 데이터를 상수로 분리하여 중복을 제거합니다.
+const posts: Post[] = [
+  {
+    slug: 'getting-started-with-nextjs',
+    title: 'Getting Started with Next.js',
+    content: 'This is a post about getting started with Next.js. It is a popular React framework for building fast and modern web applications.'
+  },
+  {
+    slug: 'typescript-is-awesome',
+    title: 'TypeScript is Awesome',
+    content: 'TypeScript adds static types to JavaScript, which can help you catch errors early and write more maintainable code.'
+  },
+  {
+    slug: 'css-modules-are-cool',
+    title: 'CSS Modules are Cool',
+    content: 'CSS Modules allow you to write CSS that is scoped to a specific component, which can help you avoid a lot of styling conflicts.'
+  }
+];
+
+// 모든 게시물 목록을 반환하는 함수
 export async function getPosts(): Promise<Post[]> {
-  // 가짜 데이터를 비동기적으로 반환하는 것을 시뮬레이션합니다.
-  return [
-    {
-      slug: 'getting-started-with-nextjs',
-      title: 'Getting Started with Next.js',
-    },
-    {
-      slug: 'typescript-is-awesome',
-      title: 'TypeScript is Awesome',
-    },
-    {
-        slug: 'css-modules-are-cool',
-        title: 'CSS Modules are Cool',
-    }
-  ];
+  return posts;
+}
+
+// slug를 기반으로 단일 게시물을 찾는 함수
+// 반환 타입을 Post | undefined로 명확하게 하여, 찾지 못했을 경우를 타입으로 표현합니다.
+export async function getPostBySlug(slug: string): Promise<Post | undefined> {
+  // 더 이상 불안전한 형 변환을 사용하지 않습니다.
+  return posts.find((post) => post.slug === slug);
 }
