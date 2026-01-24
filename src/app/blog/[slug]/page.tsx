@@ -2,6 +2,7 @@ import { getPostBySlug } from '@/lib/posts';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import LikeButton from './LikeButton';
 
 interface BlogPostPageProps {
     params: Promise<{
@@ -39,12 +40,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return (
         <article>
             <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '2rem' }}>
-                <Image 
+                <Image
                     src={post.image}
                     alt={post.title}
-                    fill 
+                    fill
                     style={{ objectFit: 'cover' }}
-                    priority 
+                    priority
                 />
             </div>
             <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>
@@ -53,6 +54,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
                 {post.content}
             </p>
+            <LikeButton slug={slug} />
         </article>
     );
 }
