@@ -10,7 +10,7 @@ export type Post = {
 };
 
 // 데이터를 상수로 분리하여 중복을 제거합니다.
-const posts: Post[] = [
+export let posts: Post[] = [
   {
     slug: 'getting-started-with-nextjs',
     title: 'Getting Started with Next.js',

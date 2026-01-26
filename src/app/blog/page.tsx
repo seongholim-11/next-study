@@ -76,6 +76,7 @@ export default async function BlogPage() {
                 {/* 100자로 내용 요약 후 '...' 추가 */}
                 {post.content.substring(0, 100)}...
               </p>
+              <p>{post.likes}</p>
             </div>
           </Link>
         ))}
