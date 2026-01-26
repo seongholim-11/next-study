@@ -3,18 +3,18 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import LikeButton from './LikeButton';
+import styles from './BlogPost.module.css';
 
 interface BlogPostPageProps {
-    params: Promise<{
+    params: {
         slug: string;
-    }>;
+    };
 }
 
-// generateMetadata handles params as a Promise
 export async function generateMetadata(
     { params }: BlogPostPageProps
 ): Promise<Metadata> {
-    const { slug } = await params;
+    const { slug } = await params
     const post = await getPostBySlug(slug);
 
     if (!post) {
@@ -28,9 +28,8 @@ export async function generateMetadata(
     };
 }
 
-// Retyped name to clear hidden characters and awaited params
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-    const { slug } = await params; // Must await params in Next.js 15+
+    const { slug } = await params
     const post = await getPostBySlug(slug);
 
     if (!post) {
@@ -38,23 +37,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
 
     return (
-        <article>
-            <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '2rem' }}>
+        <article className={styles.container}>
+            <div className={styles.imageContainer}>
                 <Image
                     src={post.image}
                     alt={post.title}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    className={styles.image}
                     priority
                 />
             </div>
-            <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                {post.title}
-            </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
-                {post.content}
-            </p>
-            <LikeButton slug={slug} likes={post.likes} />
+            <h1 className={styles.title}>{post.title}</h1>
+            <p className={styles.content}>{post.content}</p>
+            <div className={styles.likeContainer}>
+                <LikeButton slug={post.slug} likes={post.likes} />
+            </div>
         </article>
     );
 }

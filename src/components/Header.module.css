@@ -1,29 +1,56 @@
-/* src/components/Header.module.css */
 .header {
-    padding: 1rem 2rem;
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #333;
-    color: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(var(--card-border-rgb));
+  background-color: rgba(var(--background-start-rgb), 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.container {
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 800;
+  letter-spacing: -0.05em;
 }
 
 .nav {
-    margin-top: 0.5rem;
-    display: flex;
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* 24px */
 }
 
-.link {
-    color: #a0a0a0;
-    text-decoration: none;
-    transition: color 0.2s;
+.navLink {
+  color: rgb(var(--muted-foreground-rgb));
+  transition: color 0.2s ease-in-out;
 }
 
-.link:hover {
-    color: white;
+.navLink:hover {
+  color: rgb(var(--foreground-rgb));
 }
 
-.active {
-    color: white;
-    font-weight: bold;
-    text-decoration: underline;
+.createPostButton {
+  background-color: rgb(var(--primary-rgb));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.875rem; /* 14px */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 20px rgba(var(--primary-glow-rgb), 0);
+}
+
+.createPostButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(var(--primary-glow-rgb), 1);
 }

@@ -1,0 +1,34 @@
+.likeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem; /* 12px */
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  border: 1px solid rgb(var(--card-border-rgb));
+  border-radius: 9999px; /* Pill shape */
+  background-color: rgb(var(--card-rgb));
+  cursor: pointer;
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  color: rgb(var(--foreground-rgb));
+  transition: all 0.2s ease-in-out;
+}
+
+.likeButton:hover {
+  border-color: rgb(var(--primary-rgb));
+  background-color: rgba(var(--primary-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+.heart {
+  font-size: 1.25rem; /* 20px */
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.likeButton:hover .heart {
+  transform: scale(1.2);
+}
+
+.count {
+  min-width: 2ch; /* Ensure space for up to 2 digits */
+  text-align: left;
+}
