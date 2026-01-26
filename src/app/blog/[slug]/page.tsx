@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
                 {post.content}
             </p>
-            <LikeButton slug={slug} />
+            <LikeButton slug={slug} likes={post.likes} />
         </article>
     );
 }
